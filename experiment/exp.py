@@ -19,6 +19,21 @@ class experiment(object):
         model=simple()
         return model
     
+    def normalization(self,input):
+        t,f,tt = input.shape
+        input = input.transpose(1,0,2)
+        input = input.reshape(f, tt*t)
+        for i in range(4):
+            input[i] = input[i] - input.min(axis=1)[i]
+            input[i] = input[i]/input.max(axis=1)[i]
+        input = input.reshape(f,t,tt)
+        input = input.transpose(1,0,2)
+        for i in range(f):
+            input[i][4][0] /= 24
+            input[i][4][1] /= 7
+            input[i][4][2] /= 366
+        return input
+    
     def _get_data(self,tt_ratio):
         input=np.load('./data/inputno_nan.npy',allow_pickle=True)
         output=np.load('./data/outputno_nan.npy',allow_pickle=True)
