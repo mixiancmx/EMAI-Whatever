@@ -55,12 +55,12 @@ class experiment(object):
         output=np.load('data/output_no_outliner_fix.npy',allow_pickle=True)
 
         # data 2: has outliner, no wrong holiday
-        input=np.load('data/input_fix.npy',allow_pickle=True)
-        output=np.load('data/output_fix.npy',allow_pickle=True)
+        # input=np.load('data/input_fix.npy',allow_pickle=True)
+        # output=np.load('data/output_fix.npy',allow_pickle=True)
 
         # data 3: has outliner, wrong holiday 
-        input=np.load('data/input_18month_imputed_18prototype.npy',allow_pickle=True)
-        output=np.load('./data/output_18month_imputed.npy',allow_pickle=True)
+        # input=np.load('data/input_18month_imputed_18prototype.npy',allow_pickle=True)
+        # output=np.load('./data/output_18month_imputed.npy',allow_pickle=True)
         
         day_list = self.get_index(input[:,:,0],input[:,:,9],input[:,:,10])
         input = input[day_list[self.day]]
